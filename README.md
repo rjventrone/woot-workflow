@@ -1,23 +1,25 @@
 #Woot Workflow
 ***
-This is a simple Alfred workflow written in PHP that uses the woot api to get all daily deals. This class uses David Ferguson Workflow class, which takes alot of the tedious work out of creating a workflow
+This is a simple Alfred workflow written in PHP that uses the Woot API to get all daily deals. This class uses [David Ferguson's Workflow class](http://dferg.us/workflows-class/), which takes a lot of the tedious work out of creating a workflow.
 
 
 ##How to use
 ***
-- First you will need to signup for a woot API key [here](https://account.woot.com/welcome?ReturnUrl=%2fapplications "here")
-- Then you will need to add you key to the workflow by typing `wootkey`
-- The key is store in wootkey.json in the workflow. If you need to delete you key for any reason just delete that file. If you want to update your wootkey you can type wootkey and re-enter you woot api key or you can edit the file directly.
-- To make a call to woot type `woot daily` and you will get a list of all the daily deals woot has to offer
+- Download [Wootfred.alfredworkflow](https://github.com/rjventrone/woot-workflow/blob/master/Wootfred.alfredworkflow) to your machine and double click it to import into Alfred.
+- Sign up for a Woot API key [here](https://account.Woot.com/welcome?ReturnUrl=%2fapplications "here").
+- Launch Alfred and add your API Key to the workflow by typing `wootkey <Enter>`, paste in your API key, and press `<Enter>`.
+- Woot Workflow stores your key in `wootkey.json` inside the workflow. If you need to delete your key for any reason, just delete that file. If you want to update your API Key, you can type `wootkey` again and re-enter your Woot API key, or you can edit the file directly.
+- To display today's deals, launch Alfred and type `woot daily`. You will see today's list of deals. You can select a deal to launch it in your default web browser.
 
 
 
 ##Documentation
 ***
-For more documentation on the woot api you can check out [woots api here](http://api.woot.com/2 "Title")
+For more documentation on the Woot API, you can check out [Woot's API here](http://API.Woot.com/2 "Title")
 
 
 ##TODO
 ***
-1. make it so you can get a list of items for one category
-2. put a icon next to deals that are having a wootoff
+1. Get a list of items for one category.
+2. Display icon next to deals that are having a Wootoff.
+3. Order deals predictably.
