@@ -17,9 +17,7 @@ require('workflow.php');
 */
 class Woot {
     
-  public $alfred;
-  public $test;
-  
+  public $alfred;  
   public $wootKey;
   public $baseURL;
   public $apiVersion;
@@ -30,23 +28,29 @@ class Woot {
   }
 
 
-  public function urlBuilder() {
-    $this->baseURL = 'http://api.woot.com';
-    $this->wootKey = $this->alfred->read('wootkey.json');
-    $this->apiVersion = '2';
-    echo "string";
-    echo $this->wootKey[0];
+  public function urlBuilder($type) {
+    $this->baseURL = 'http://api.woot.com/';
+    $this->wootKey = 'key='.$this->alfred->read('wootkey.json')[0];
+    $this->apiVersion = '2/events.json?';
+    $this->eventType = 'eventType='.$type.'&';
+    return $this->baseURL.$this->apiVersion.$this->eventType.$this->wootKey;
   }
 
   public function setKey($key = null) {
+    if(!file_exists('wootkey.json')){
+      fopen("wootkey.json", "w");
+    }
     $this->alfred->write([$key],'wootkey.json');
   }
 
   public function getAllDeals() {
+
+    $url = $this->urlBuilder('Daily');
+
     $ch = curl_init();
 
     // Set url
-    curl_setopt($ch, CURLOPT_URL, 'http://api.woot.com/2/events.json?eventType=Daily&key=ee48b69977e94473aa3a775a25d7c84f');
+    curl_setopt($ch, CURLOPT_URL, $url);
 
     // Set method
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
